@@ -20,7 +20,7 @@ jobs:
           python-version: 3.8
 
       - name: Install Requirements
-        run: pip install requests scholarly boto3 plotly kaleido
+        run: pip install scholarly boto3 plotly kaleido
 
       - name: Execute Python script
         run: |
@@ -29,3 +29,4 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_STORAGE_BUCKET_NAME: ${{ secrets.AWS_STORAGE_BUCKET_NAME }}
+          SCHOLAR_PROFILE_ID: ${{secrets.SCHOLAR_PROFILE_ID }}
