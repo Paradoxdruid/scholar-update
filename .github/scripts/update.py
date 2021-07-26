@@ -25,8 +25,6 @@ from typing import Dict, Any
 BUCKET_NAME: str = os.environ.get("AWS_STORAGE_BUCKET_NAME")
 PROFILE_ID: str = os.environ.get("SCHOLAR_PROFILE_ID")
 
-# _FLoVbkAAAAJ&hl
-
 
 def main(profile_id: str, bucket_name: str) -> None:
     """Wrapper to retrieve data, write updated csv, and use it to write updated graph
@@ -65,9 +63,11 @@ def make_citation_figure(author: Dict[str, Any]) -> BytesIO:
         auth: Dict[int, int] = author.get("cites_per_year")
     else:
         auth = {2021: 0}
-    fig: Any = px.bar(x=auth.keys(), y=auth.values())
-    fig.update_xaxes(title="Year", dtick=1)
-    fig.update_yaxes(title="Citations per Year")
+    fig: Any = px.bar(
+        x=auth.keys(), y=auth.values(), template="seaborn", width=400, height=250,
+    )
+    fig.update_xaxes(title="", dtick=1, tickangle=-90)
+    fig.update_yaxes(title="Citations", title_standoff=2, dtick=25)
 
     wrapper: BytesIO = BytesIO()
     fig.write_image(wrapper, format="png")
