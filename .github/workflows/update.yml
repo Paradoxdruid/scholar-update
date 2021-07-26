@@ -20,7 +20,7 @@ jobs:
           python-version: 3.8
 
       - name: Install Requirements
-        run: pip install scholarly boto3 plotly kaleido
+        run: pip install pandas scholarly boto3 plotly kaleido
 
       - name: Execute Python script
         run: |
