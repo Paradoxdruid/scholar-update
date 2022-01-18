@@ -2,7 +2,7 @@ name: Update Scholar Data
 
 on:
   schedule:
-    - cron: "1 3 * * *"
+    - cron: "1 3 * * 0"
   # Manual trigger
   workflow_dispatch:
 
